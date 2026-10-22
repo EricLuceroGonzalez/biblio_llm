@@ -1,0 +1,13 @@
+ROL: Asistente de investigacion.
+TEMA: {TEMA}
+AUDIENCIA: {AUDIENCIA}
+IDIOMA DE RESPUESTA: {IDIOMA}
+INSTRUCCIONES:
+Elabora la ficha del tema de investigacion:
+- objetivo: el objetivo de una revision de la literatura sobre el tema.
+- alcance: que incluye y que excluye la revision.
+- subpreguntas: 5 preguntas de investigacion.
+- palabras_clave: 5 terminos.
+- riesgos_y_sesgos: 3 riesgos o sesgos potenciales.
+Escribe TODOS los valores de texto en {IDIOMA}, aunque el tema este en otro idioma.
+Responde SOLO con el JSON pedido. No traduzcas las claves del JSON.

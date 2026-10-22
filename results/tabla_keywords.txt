@@ -1,0 +1,17 @@
+| Grupo       | Término                     | Nota                                                                 |
+|-------------|-----------------------------|----------------------------------------------------------------------|
+| Núcleo      | Planificación                | Concepto central en la gestión de horarios.                           |
+| Núcleo      | Programación de horarios    | Método para asignar turnos a empleados.                               |
+| Núcleo      | Metaheurísticas             | Algoritmos utilizados para resolver problemas complejos.             |
+| Núcleo      | Asignación de recursos      | Distribución eficiente de recursos en el timetable.                   |
+| Núcleo      | Optimización                | Objetivo principal en la planificación de personal.                   |
+| Sinónimos   | Planeación                  | Sinónimo de planificación en español.                                 |
+| Sinónimos   | Organización                | Reorganización de horarios y turnos.                                 |
+| Sinónimos   | Heurísticas                 | Algoritmos que guían la búsqueda de soluciones.                       |
+| Sinónimos   | Problemas combinatorios     | Clase de problemas que se abordan en la planificación.                |
+| Sinónimos   | Gestion de recursos         | Gestión eficiente de los recursos humanos.                           |
+| Exclusiones  | Programación de enfermeras  | Específico para la planificación de personal en salud.               |
+| Exclusiones  | Programación de construcción| Aplicación en proyectos de construcción, no en recursos humanos.      |
+| Exclusiones  | Programación académica     | Específico para la planificación de horarios en instituciones educativas.|
+| Exclusiones  | Gestión de proyectos       | Más amplio que la planificación de horarios.                          |
+| Exclusiones  | Algoritmos genéticos        | Tipo específico de metaheurísticas, no general.                       |

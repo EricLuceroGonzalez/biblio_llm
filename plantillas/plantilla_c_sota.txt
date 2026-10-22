@@ -1,0 +1,11 @@
+ROL: Asistente de investigacion.
+TEMA: {TEMA}
+IDIOMA DE RESPUESTA: {IDIOMA}
+INSTRUCCIONES:
+Elabora el plan de un mini estado del arte (mini-SOTA) sobre el tema:
+- titulo: titulo del documento.
+- resumen_100_palabras: resumen de unas 100 palabras.
+- secciones: entre 3 y 6 secciones, cada una con nombre, objetivo y puntos a tratar.
+- criterios_de_calidad: 3 criterios para evaluar la calidad del documento.
+Escribe TODOS los valores de texto en {IDIOMA}, aunque el tema este en otro idioma.
+Responde SOLO con el JSON pedido. No traduzcas las claves del JSON.

@@ -1,0 +1,38 @@
+{
+  "titulo": "Asignación de horarios de personal mediante algoritmos metaheurísticos",
+  "resumen_100_palabras": "La asignación de horarios de personal es un problema complejo que requiere soluciones eficientes para optimizar recursos y satisfacer las necesidades operativas. Los algoritmos metaheurísticos, como la búsqueda tabú, la optimización basada en colonias de hormigas y las redes neuronales, son herramientas poderosas para abordar este tipo de problemas. Este trabajo explora la aplicación de estas técnicas, analizando su eficacia en diferentes contextos y proponiendo metodologías para su implementación en entornos reales.",
+  "secciones": [
+    {
+      "nombre": "Introducción",
+      "objetivo": "Presentar el problema de la asignación de horarios de personal y su relevancia en diferentes sectores.",
+      "puntos": [
+        "Definición del problema de programación de personal.",
+        "Importancia en contextos laborales.",
+        "Retos y desafíos en la planificación."
+      ]
+    },
+    {
+      "nombre": "Marco teórico",
+      "objetivo": "Revisar los fundamentos de los algoritmos metaheurísticos y su aplicación en la planificación de horarios.",
+      "puntos": [
+        "Conceptos básicos de metaheurísticas.",
+        "Revisión de algoritmos relevantes (búsqueda tabú, colonias de hormigas, etc.).",
+        "Aplicación en problemas de asignación de horarios."
+      ]
+    },
+    {
+      "nombre": "Propuesta de solución",
+      "objetivo": "Proponer y analizar metodologías basadas en metaheurísticas para resolver el problema de asignación de horarios.",
+      "puntos": [
+        "Diseño de un algoritmo específico para la planificación de horarios.",
+        "Implementación y prueba de la solución.",
+        "Análisis de resultados y comparación con métodos tradicionales."
+      ]
+    }
+  ],
+  "criterios_de_calidad": [
+    "Clareza en la exposición de los conceptos y metodologías.",
+    "Practicidad de las soluciones propuestas.",
+    "Inclusión de casos de estudio y aplicaciones reales."
+  ]
+}

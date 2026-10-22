@@ -1,0 +1,13 @@
+ROL: Asistente de investigacion.
+TEMA: {TEMA}
+IDIOMA DE RESPUESTA: {IDIOMA}
+INSTRUCCIONES:
+1. Genera 15 palabras clave para buscar literatura cientifica sobre el tema.
+2. Organizalas en tres grupos de 5:
+   - nucleo: los terminos centrales del tema.
+   - sinonimos: variantes, sinonimos o terminos relacionados de los del nucleo.
+   - exclusiones: terminos que conviene EXCLUIR de la busqueda porque generan ruido.
+3. Para cada termino, anade una nota breve que justifique su eleccion.
+4. Rigor academico: usa terminos que aparezcan en titulos y resumenes de articulos.
+5. Escribe los terminos y las notas en {IDIOMA}, aunque el tema este en otro idioma.
+6. Responde SOLO con el JSON pedido. No traduzcas las claves del JSON.

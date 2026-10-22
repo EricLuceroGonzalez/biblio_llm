@@ -1,0 +1,18 @@
+{
+  "tema": "Personnel scheduling or timetabling using metaheuristic algorithms",
+  "audiencia": "PhD students and research personnel",
+  "objetivo": "To explore the application and effectiveness of metaheuristic algorithms in solving personnel scheduling and timetabling problems, with a focus on optimization, efficiency, and practical implementation.",
+  "alcance": {
+    "incluye": ["Application of metaheuristic algorithms (e.g., genetic algorithms, simulated annealing, particle swarm optimization) in personnel scheduling", "Comparison of different metaheuristic approaches", "Development of hybrid algorithms combining metaheuristics with other techniques", "Analysis of scheduling constraints and objectives", "Implementation and evaluation of scheduling systems"],
+    "excluye": ["Traditional scheduling methods (e.g., deterministic algorithms)", "Exact optimization techniques for large-scale problems", "Scheduling problems unrelated to personnel management", "Project scheduling or resource allocation", "Applications outside the scope of personnel management"]
+  },
+  "subpreguntas": [
+    "Which metaheuristic algorithms are most effective for personnel scheduling problems?",
+    "How do problem-specific constraints influence the choice of metaheuristic algorithms?",
+    "What is the impact of solution representation and encoding on the performance of metaheuristics?",
+    "How can hybrid metaheuristic approaches improve scheduling outcomes?",
+    "What are the computational challenges in applying metaheuristics to large-scale personnel scheduling?"
+  ],
+  "palabras_clave": ["metaheuristics", "personnel scheduling", "optimization", "hybrid algorithms", "computational methods"],
+  "riesgos_y_sesgos": ["Potential bias in algorithm selection", "Computational complexity affecting scalability", "Overemphasis on theoretical aspects at the expense of practical implementation"]
+}
