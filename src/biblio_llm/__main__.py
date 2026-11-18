@@ -15,7 +15,7 @@ from pathlib import Path
 
 from pydantic import ValidationError
 
-from biblio_llm import __version__
+from biblio_llm import __version__, classify  # con el resto de imports
 from biblio_llm.config import get_settings
 from biblio_llm.logging_setup import setup_logging
 from biblio_llm.ollama_client import OllamaClient, OllamaError
@@ -42,6 +42,11 @@ def _parser() -> argparse.ArgumentParser:
         default="English",
         help="idioma de la respuesta (p. ej. español, english)",
     )
+    r.add_argument(
+        "--rol",
+        required=True,
+        help="Rol que adoptará el LLM (ej. investigadores y estudiantes de doctorado)",
+    )
     r.add_argument("--audiencia", help="audiencia de la ficha (plantilla B)")
     r.add_argument("--only", default="a,b,c", help="plantillas a ejecutar (p. ej. b,c)")
     think = r.add_mutually_exclusive_group()
@@ -55,6 +60,7 @@ def _parser() -> argparse.ArgumentParser:
     think.add_argument("--no-think", dest="think", action="store_false")
     v = sub.add_parser("validate", help="validar un run existente")
     v.add_argument("run_dir", type=Path)
+    classify.add_parser(sub)
     return p
 
 
@@ -81,6 +87,8 @@ def main(argv: list[str] | None = None) -> int:
         for line in results:
             print(f"  {line}")
         return 0 if all(r.startswith("PASS") for r in results) else 1
+    if args.command == "classify":
+        return classify.run_cli(args, settings)
 
     client = OllamaClient(settings)
 
@@ -115,6 +123,7 @@ def main(argv: list[str] | None = None) -> int:
         settings = settings.model_copy(update={"think": args.think})
     params = RunParams(
         tema=args.tema,
+        rol=args.rol,
         idioma=args.idioma or settings.default_idioma,
         audiencia=args.audiencia or settings.default_audiencia,
     )

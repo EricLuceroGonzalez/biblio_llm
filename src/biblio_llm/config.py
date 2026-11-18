@@ -32,7 +32,7 @@ class Settings(BaseSettings):
     runs_dir: Path = Path().cwd() / "runs"
 
     # Valores por defecto de la CLI (se pueden sobrescribir con --idioma, etc.)
-    default_idioma: str = "español"
+    default_idioma: str = "english"
     default_audiencia: str = "investigadores y estudiantes de doctorado"
 
     log_dir: Path = Path("logs")

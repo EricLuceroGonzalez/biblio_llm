@@ -25,6 +25,7 @@ logger = logging.getLogger(__name__)
 @dataclass
 class RunParams:
     tema: str
+    rol: str
     idioma: str
     audiencia: str
 
@@ -69,12 +70,13 @@ def run_task(
     folder.mkdir()
     values = {
         "TEMA": params.tema,
+        "ROL": params.rol,
         "IDIOMA": params.idioma,
         "AUDIENCIA": params.audiencia,
     }
 
     user = render(load_template(settings.templates_dir, task.template), values)
-    system = system_prompt(params.idioma)
+    system = system_prompt(params.idioma, params.rol, params.tema)
     _write(folder / "prompt.txt", f"### SYSTEM\n{system}\n\n### USER\n{user}\n")
 
     started = time.monotonic()

@@ -34,11 +34,14 @@ def load_template(templates_dir: Path, filename: str) -> str:
     return path.read_text(encoding="utf-8")
 
 
-def system_prompt(idioma: str) -> str:
+def system_prompt(idioma: str, rol: str, TEMA: str) -> str:
     """Mensaje de sistema: refuerza el idioma, que es lo que más se desobedece."""
     return (
-        "Eres un asistente de investigación académica riguroso. "
-        f"Escribe TODOS los valores de texto en {idioma}, aunque el tema o las "
-        "instrucciones estén en otro idioma. Nunca traduzcas las claves del JSON. "
-        "Responde únicamente con el JSON que se te pide."
+        f"[ROL] {rol} "
+        f"[TAREA] Genera una tabla Markdown con 12 palabras clave para: {TEMA}."
+        "[FORMATO] Devuelve SOLO la tabla (sin explicación) con columnas:"
+        "| keyword | subtema | sinónimos | consulta_google_scholar |"
+        f"[IDIOMA] Escribe TODOS los valores de texto en {idioma}, "
+        "aunque el tema o las instrucciones estén en otro idioma. "
+        "Cada 'consulta_google_scholar' debe ser una query breve (<= 8 palabras)."
     )
