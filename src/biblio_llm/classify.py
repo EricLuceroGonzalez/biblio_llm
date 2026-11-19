@@ -6,14 +6,26 @@ así que siempre es exactamente ``YES`` o ``NO`` más una explicación breve.
 
 Entrada: el Excel del Módulo 2 (``.xlsx``) o un CSV de biblio-search
 (``results.csv`` / ``merged.csv``). Salida: una carpeta nueva en ``runs/`` con
-el Excel clasificado, los prompts y ``meta.json``; nunca se sobrescribe nada.
+``articulos_clasificado_abstract.xlsx`` (el nombre que espera el Módulo 5), los
+prompts y ``meta.json``; nunca se sobrescribe nada.
+
+Formato del Excel (``--formato``):
+
+* ``curso`` (por defecto): una columna por pregunta, como el script del curso:
+  ``YES - explicación``, ``NO - explicación``, ``Error: ...`` o
+  ``SKIPPED - abstract vacío``. Se filtra con "empieza por YES".
+* ``detallado``: dos columnas por pregunta, la respuesta sola y
+  ``<pregunta> (motivo)``.
 """
 
 from __future__ import annotations
 
+import csv
 import hashlib
+import io
 import json
 import logging
+import re
 import time
 from dataclasses import dataclass, field
 from datetime import datetime
@@ -28,6 +40,9 @@ from biblio_llm.ollama_client import OllamaClient, OllamaError
 from biblio_llm.runner import new_run_dir
 
 logger = logging.getLogger(__name__)
+
+OUTPUT_NAME = "articulos_clasificado_abstract.xlsx"
+FORMATS = ("curso", "detallado")
 
 # Nombres de columna aceptados (Excel del curso, biblio-search, variantes comunes)
 TITLE_COLUMNS = ["Título", "Titulo", "Title", "title", "título", "titulo"]
@@ -67,6 +82,48 @@ def _find_column(df: pd.DataFrame, candidates: list[str]) -> str | None:
     return next((c for c in candidates if c in df.columns), None)
 
 
+def _read_text(path: Path) -> str:
+    """UTF-8 (con o sin BOM); si falla, Windows-1252 (CSV antiguos de Excel)."""
+    raw = path.read_bytes()
+    try:
+        return raw.decode("utf-8-sig")
+    except UnicodeDecodeError:
+        return raw.decode("cp1252")
+
+
+def read_csv(path: Path) -> pd.DataFrame:
+    """Lee un CSV detectando el separador (``,`` ``;`` o tabulador).
+
+    Excel en español exporta con ``;``; Scopus y biblio-search con ``,``. Si el
+    archivo está mal formado, se explica la causa en lugar de mostrar el error
+    interno de pandas. No se descartan filas en silencio: en una revisión
+    sistemática perder artículos sin saberlo es peor que detenerse.
+    """
+    text = _read_text(path)
+    sample = "\n".join(text.splitlines()[:20])
+    try:
+        sep = csv.Sniffer().sniff(sample, delimiters=",;\t").delimiter
+    except csv.Error:
+        sep = ","
+    try:
+        return pd.read_csv(io.StringIO(text), sep=sep)
+    except pd.errors.ParserError as exc:
+        match = re.search(r"Expected (\d+) fields in line (\d+), saw (\d+)", str(exc))
+        where = (
+            f"la cabecera tiene {match[1]} columnas pero la línea {match[2]} "
+            f"tiene {match[3]}"
+            if match
+            else str(exc)
+        )
+        name = {",": "coma", ";": "punto y coma", "\t": "tabulador"}[sep]
+        raise ClassifyError(
+            f"{path.name} no es un CSV válido: {where} (separador detectado: {name}). "
+            "Probablemente un campo (p. ej. el abstract) contiene el separador sin ir "
+            "entre comillas. Solución: guarda el archivo desde Excel como .xlsx, o "
+            "como 'CSV UTF-8', y vuelve a intentarlo."
+        ) from exc
+
+
 def load_articles(path: Path) -> tuple[pd.DataFrame, str, str | None]:
     """Lee .xlsx o .csv y devuelve (tabla, columna de abstract, columna de título)."""
     if not path.is_file():
@@ -74,7 +131,7 @@ def load_articles(path: Path) -> tuple[pd.DataFrame, str, str | None]:
     if path.suffix.lower() in {".xlsx", ".xls"}:
         df = pd.read_excel(path)
     elif path.suffix.lower() == ".csv":
-        df = pd.read_csv(path, encoding="utf-8-sig")
+        df = read_csv(path)
     else:
         raise ClassifyError(f"formato no soportado: {path.suffix} (usa .xlsx o .csv)")
     abstract_col = _find_column(df, ABSTRACT_COLUMNS)
@@ -112,6 +169,14 @@ class Answer:
     answer: str  # YES | NO | SKIPPED (sin abstract) | ERROR
     explanation: str
     seconds: float = 0.0
+
+    def cell(self) -> str:
+        """Texto de una sola celda, como en el script del curso."""
+        if self.answer == "ERROR":
+            return f"Error: {self.explanation}"
+        if not self.explanation:
+            return self.answer
+        return f"{self.answer} - {self.explanation}"
 
 
 def ask(client: OllamaClient, abstract: str, question: str, retries: int = 1) -> Answer:
@@ -161,8 +226,11 @@ def classify(
     questions_path: Path,
     limit: int | None = None,
     client: OllamaClient | None = None,
+    fmt: str = "curso",
 ) -> ClassifySummary:
     """Clasifica cada abstract con cada pregunta y guarda todo en un run nuevo."""
+    if fmt not in FORMATS:
+        raise ClassifyError(f"formato desconocido {fmt!r} (usa: {', '.join(FORMATS)})")
     df, abstract_col, title_col = load_articles(input_path)
     questions = load_questions(questions_path)
     if limit:
@@ -193,8 +261,7 @@ def classify(
         abstract_col,
     )
 
-    answers: dict[str, list[str]] = {q: [] for q in questions}
-    reasons: dict[str, list[str]] = {q: [] for q in questions}
+    results: dict[str, list[Answer]] = {q: [] for q in questions}
     interrupted = False
     try:
         for n, (_, row) in enumerate(df.iterrows(), start=1):
@@ -203,23 +270,28 @@ def classify(
             abstract = _text(row.get(abstract_col))
             for question in questions:
                 result = ask(client, abstract, question)
-                answers[question].append(result.answer)
-                reasons[question].append(result.explanation)
+                results[question].append(result)
                 logger.info("    %s → %s", question[:60], result.answer)
     except KeyboardInterrupt:
         interrupted = True
         logger.warning("Interrumpido: se guardan los artículos ya clasificados.")
 
-    done = len(answers[questions[0]])
+    done = len(results[questions[0]])
     out = df.head(done).copy()
     for question in questions:
-        out[question] = answers[question]
-        out[f"{question} (motivo)"] = reasons[question]
-    output = run_dir / "articulos_clasificados.xlsx"
+        if fmt == "curso":
+            out[question] = [r.cell() for r in results[question]]
+        else:
+            out[question] = [r.answer for r in results[question]]
+            out[f"{question} (motivo)"] = [r.explanation for r in results[question]]
+    output = run_dir / OUTPUT_NAME
     out.to_excel(output, index=False)
 
     counts = {
-        q: {k: answers[q].count(k) for k in ("YES", "NO", "SKIPPED", "ERROR")}
+        q: {
+            k: sum(r.answer == k for r in results[q])
+            for k in ("YES", "NO", "SKIPPED", "ERROR")
+        }
         for q in questions
     }
     meta = {
@@ -231,6 +303,7 @@ def classify(
             "abstract_column": abstract_col,
             "title_column": title_col,
         },
+        "output": {"file": OUTPUT_NAME, "format": fmt},
         "model": settings.model,
         "model_digest": digest,
         "options": {
@@ -262,6 +335,13 @@ def add_parser(sub: Any) -> None:
     c.add_argument(
         "--limit", type=int, help="clasificar solo los N primeros (para probar)"
     )
+    c.add_argument(
+        "--formato",
+        choices=FORMATS,
+        default="curso",
+        help="curso: una columna por pregunta ('YES - motivo'); "
+        "detallado: respuesta y motivo en columnas separadas",
+    )
     think = c.add_mutually_exclusive_group()
     think.add_argument("--think", dest="think", action="store_true", default=None)
     think.add_argument(
@@ -277,7 +357,9 @@ def run_cli(args: Any, settings: Settings) -> int:
     if args.think is not None:
         settings = settings.model_copy(update={"think": args.think})
     try:
-        summary = classify(settings, args.input, args.preguntas, args.limit)
+        summary = classify(
+            settings, args.input, args.preguntas, args.limit, fmt=args.formato
+        )
     except (ClassifyError, OllamaError) as exc:
         print(f"✗ {exc}")
         return 2
