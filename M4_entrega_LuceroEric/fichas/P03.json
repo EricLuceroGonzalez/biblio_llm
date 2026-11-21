@@ -1,0 +1,23 @@
+{
+  "paper_id": "P03",
+  "title": "Personnel Scheduling during the COVID-19 Pandemic: A Probabilistic Graph-Based Approach.",
+  "year": null,
+  "source": {
+    "doi": "10.3390/healthcare11131917",
+    "url": "https://doi.org/10.3390/healthcare11131917"
+  },
+  "problem": "The paper addresses the challenge of effective personnel scheduling during the COVID-19 pandemic, particularly in minimizing the risk of infection spread among employees while meeting organizational goals.",
+  "contribution": "The paper formulates challenges in personnel scheduling during the COVID-19 pandemic using two Mixed Integer Non-linear Programming (MINLP) models and proposes a canonical genetic algorithm along with two commercial solvers to solve these problems.",
+  "method": "The paper proposes a canonical genetic algorithm as well as two commercial solvers to solve the formulated MINLP models.",
+  "data_setup": "not_specified",
+  "results": "The results demonstrate that following the recommended occupancy and testing strategy reduces the risk of infection by 25-60% under different scenarios, with vaccination status and interaction rate being critical factors.",
+  "limitations": "not_specified",
+  "keywords": [
+    "Personnel Scheduling",
+    "COVID-19",
+    "Probabilistic Graph-Based Approach",
+    "Mixed Integer Non-linear Programming",
+    "Genetic algorithm",
+    "Risk Reduction"
+  ]
+}

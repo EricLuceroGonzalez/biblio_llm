@@ -1,0 +1,24 @@
+{
+  "paper_id": "P11",
+  "title": "Shift Generation Using a Nurse Scheduling Model for a University Festival",
+  "year": null,
+  "source": {
+    "doi": "10.1007/978-3-032-38477-5_10",
+    "url": "https://doi.org/10.1007/978-3-032-38477-5_10"
+  },
+  "problem": "Creating shift schedules for large-scale events, such as university festivals, presents a significant challenge due to the manual process being time-consuming and mentally burdensome, compounded by limited human resources and individuals handling multiple roles.",
+  "contribution": "This study developed a shift generation system using Python and the optimization solver Gurobi, by applying the 'Nurse Scheduling Problem (NSP)' model commonly used for hospital shift allocation.",
+  "method": "The study used the Nurse Scheduling Problem model, implemented with Python and Gurobi.",
+  "data_setup": "The system was implemented using actual data from the 'iTL Fest. 2025' university festival, involving 72 staff members and 12 types of shifts.",
+  "results": "The system successfully generated an optimal schedule in just 27 s, strictly satisfying all essential requirements (hard constraints) while optimizing preferences (soft constraints) such as the desired number of personnel and staff skill levels.",
+  "limitations": "not_specified",
+  "keywords": [
+    "Nurse Scheduling Problem",
+    "shift generation",
+    "university festival",
+    "optimization",
+    "Gurobi",
+    "Python",
+    "university events"
+  ]
+}

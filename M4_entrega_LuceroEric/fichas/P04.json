@@ -1,0 +1,21 @@
+{
+  "paper_id": "P04",
+  "title": "A Hybrid Genetic Algorithm for Nurse Scheduling Problem considering the Fatigue Factor.",
+  "year": null,
+  "source": {
+    "doi": "10.1155/2021/5563651",
+    "url": "https://doi.org/10.1155/2021/5563651"
+  },
+  "problem": "The urgent need to modify nurse scheduling to address the fatigue of nurses caring for COVID-19 patients 24 hours a day.",
+  "contribution": "Proposes a new mathematical model for Nurse Scheduling Problem (NSP) considering the fatigue factor and develops a hybrid Genetic Algorithm (GA) to solve it.",
+  "method": "Developed a hybrid Genetic Algorithm (GA) to provide a nurse schedule for all three shifts of a day.",
+  "data_setup": "A randomly generated problem and a real case study at a hospital in Esfahan, Iran.",
+  "results": "The proposed model provided a nurse schedule for May, which was superior to the manual schedule currently used in the department.",
+  "limitations": "not_specified",
+  "keywords": [
+    "nurse scheduling",
+    "Genetic algorithm",
+    "Fatigue Factor",
+    "COVID-19"
+  ]
+}

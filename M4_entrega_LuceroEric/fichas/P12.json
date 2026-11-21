@@ -1,0 +1,20 @@
+{
+  "paper_id": "P12",
+  "title": "A framework for nurse scheduling problems based on prevention of bad-relationships",
+  "year": null,
+  "source": {
+    "doi": "10.1504/ijor.2024.10064338",
+    "url": "https://doi.org/10.1504/ijor.2024.10064338"
+  },
+  "problem": "Nurse scheduling is a complex problem that requires careful consideration of various factors, including skill heterogeneity, unfavourable relationship factors, and expenses.",
+  "contribution": "This research proposes a framework for nurse scheduling that uses integer linear programming (ILP) to minimise unfavourable relationship factors and reduce expenses.",
+  "method": "The framework uses integer linear programming (ILP).",
+  "data_setup": "not_specified",
+  "results": "The proposed model performs as expected and will be helpful for management.",
+  "limitations": "not_specified",
+  "keywords": [
+    "nurse scheduling",
+    "integer linear programming",
+    "bad relationships"
+  ]
+}

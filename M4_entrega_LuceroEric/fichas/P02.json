@@ -1,0 +1,22 @@
+{
+  "paper_id": "P02",
+  "title": "A multi-objective model for a nurse scheduling problem by emphasizing human factors.",
+  "year": null,
+  "source": {
+    "doi": "10.1177/0954411919889560",
+    "url": "https://doi.org/10.1177/0954411919889560"
+  },
+  "problem": "Assigning nurses to departments and shifts based on human factors (skill, preference, compatibility) to enhance teamwork and healthcare efficiency.",
+  "contribution": "A unique multi-objective mathematical model for nurse scheduling is proposed, considering nurses' decision-making styles.",
+  "method": "Three meta-heuristics (multi-objective Keshtel algorithm, NSGA-II, and multi-objective tabu search) and data envelopment analysis for ranking Pareto solutions are developed.",
+  "data_setup": "A real-life case at a large hospital in Tehran, Iran.",
+  "results": "The applicability and effectiveness of the proposed model are assessed based on experimental results.",
+  "limitations": "not_specified",
+  "keywords": [
+    "nurse scheduling",
+    "human factors",
+    "multi-objective model",
+    "meta-heuristics",
+    "data envelopment analysis"
+  ]
+}

@@ -1,0 +1,6 @@
+# Una pregunta YES/NO por línea. Las líneas que empiezan por # se ignoran.
+Does the study use a metaheuristic algorithm (e.g. genetic algorithm, tabu search, simulated annealing)?
+Does the study the metaheuristic BRKGA?
+Does the study address personnel scheduling, rostering or timetabling?
+Does the study report a computational experiment on benchmark or real-world instances?
+Is the study a literature review or survey?

@@ -1,0 +1,20 @@
+{
+  "paper_id": "P07",
+  "title": "Hybrid multi-objective metaheuristic algorithms for solving airline crew rostering problem with qualification and language.",
+  "year": null,
+  "source": {
+    "doi": "10.3934/mbe.2023066",
+    "url": "https://doi.org/10.3934/mbe.2023066"
+  },
+  "problem": "The rational allocation of crew members is a strategy to alleviate crew scarcity, but without an appropriate allocation plan, some flights may be canceled due to a lack of pilots in the scheduling period.",
+  "contribution": "We propose the design of two hybrid metaheuristic algorithms based on a genetic algorithm, variable neighborhood search algorithm and the Aquila optimizer to face the trade-off between fairness and crew satisfaction.",
+  "method": "We propose the design of two hybrid metaheuristic algorithms based on a genetic algorithm, variable neighborhood search algorithm and the Aquila optimizer.",
+  "data_setup": "not_specified",
+  "results": "The simulation results show that our approach preserves the fairness of the system and maximizes the fairness at the cost of crew satisfaction.",
+  "limitations": "not_specified",
+  "keywords": [
+    "airline crew rostering problem",
+    "hybrid metaheuristic algorithms",
+    "multi-objective optimization"
+  ]
+}

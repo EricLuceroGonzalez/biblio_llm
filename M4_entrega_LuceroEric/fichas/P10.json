@@ -1,0 +1,21 @@
+{
+  "paper_id": "P10",
+  "title": "Intelligent Model of Nursing Shift in Tehran University of Medical Sciences, Tehran, Iran.",
+  "year": null,
+  "source": {
+    "doi": "10.18502/ijph.v51i5.9427",
+    "url": "https://doi.org/10.18502/ijph.v51i5.9427"
+  },
+  "problem": "The study addresses the need for optimizing nursing shift planning to improve efficiency and fairness in hospital operations, given the 24-hour nature of hospitals and limited nursing staff.",
+  "contribution": "The paper contributes by providing a genetic algorithm-based solution for flexible nursing shift planning and working hour estimation in hospitals.",
+  "method": "Genetic algorithm was used to provide operational solutions for flexible shifts and working hour planning.",
+  "data_setup": "Yas Hospital, Tehran University of Medical Sciences Hospital, Tehran, Iran",
+  "results": "The approach provided the possibility of appropriate planning by selecting each nurse and determining the approved shifts of each ward, enabling the determination of required shifts per month and estimating departmental needs.",
+  "limitations": "not_specified",
+  "keywords": [
+    "Nursing shift",
+    "Genetic algorithm",
+    "Hospital management",
+    "Shift planning"
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "paper_id": "P08",
+  "title": "Optimization of multi-objective flexible scheduling for container rail mounted gantry cranes in railway logistics yards.",
+  "year": null,
+  "source": {
+    "doi": "10.1371/journal.pone.0357406",
+    "url": "https://doi.org/10.1371/journal.pone.0357406"
+  },
+  "problem": "The efficiency of rail-mounted gantry crane (RMG) operations directly affects train handling performance in railway logistics terminals.",
+  "contribution": "This study develops a revised multi-objective scheduling framework for flexible RMG operations in railway container terminals.",
+  "method": "The framework combines resource enumeration, initial crane layout optimization, and an improved genetic algorithm with adaptive operators and tabu-search-based local refinement.",
+  "data_setup": "Xi'an International Port Station with 110 container tasks and five RMGs.",
+  "results": "The proposed IGA obtained an average completion time of 752.4 min under the baseline configuration and remained feasible under tested safety-distance and crane-number scenarios.",
+  "limitations": "The claims are limited to the reported instance, and the method is presented as a reproducible heuristic rather than a proof of global optimality.",
+  "keywords": [
+    "Container",
+    "Multi-objective scheduling",
+    "Genetic algorithm",
+    "Railway logistics",
+    "RMG operations",
+    "Flexible scheduling"
+  ]
+}

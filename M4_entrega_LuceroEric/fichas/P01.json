@@ -1,0 +1,22 @@
+{
+  "paper_id": "P01",
+  "title": "A matheuristic for customized multi-level multi-criteria university timetabling.",
+  "year": null,
+  "source": {
+    "doi": "10.1007/s10479-023-05325-2",
+    "url": "https://doi.org/10.1007/s10479-023-05325-2"
+  },
+  "problem": "The challenge is to create customized university timetables that balance individual student preferences with collective criteria like workload and idle time, especially with the integration of online courses and flexibility requirements.",
+  "contribution": "We develop a multi-level planning process for university timetabling using a matheuristic approach that combines mathematical programming and genetic algorithms to optimize lecture, tutorial, and individual timetables.",
+  "method": "We utilize a mathematical-programming-based planning process as part of a matheuristic which implements a genetic algorithm to improve lecture plans, tutorial plans, and individual timetables.",
+  "data_setup": "not_specified",
+  "results": "Computational results exhibit the procedure's capability of generating high quality schedules.",
+  "limitations": "not_specified",
+  "keywords": [
+    "University timetabling",
+    "Multi-level planning",
+    "Matheuristic",
+    "Genetic algorithm",
+    "Artificial neural network metamodel"
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "paper_id": "P06",
+  "title": "Optimization of hospital resource scheduling efficiency based on dynamic weighted distance anomaly detection algorithm.",
+  "year": null,
+  "source": {
+    "doi": "10.1038/s41598-026-44415-6",
+    "url": "https://doi.org/10.1038/s41598-026-44415-6"
+  },
+  "problem": "The paper addresses engineering challenges in hospital communication and energy-saving systems, including load imbalance, low energy efficiency, and delayed anomaly detection.",
+  "contribution": "This study developed an intelligent resource scheduling integrated model to address engineering challenges like load imbalance, low energy efficiency, and delayed anomaly detection in hospital communication and energy-saving systems.",
+  "method": "The model integrated the Dynamic Weighted Distance-Based Outlier Detection (DWD-OD) algorithm with the Multimodal Resource Collaborative Optimization (MRCOF) framework. It used an improved Genetic Simulated Annealing Algorithm (GSAA) in a two-stage optimization strategy.",
+  "data_setup": "not_specified",
+  "results": "The detection accuracy reached 95.3%, system energy efficiency improved to 89.7%, and critical task response time was controlled within 4.8 seconds.",
+  "limitations": "The validation of this study was only based on data from a single medical center, and some abnormal samples were enhanced by generative adversarial networks. Security assessment depends on the model simulation environment, and these factors may have certain applicability biases when extended to medical institutions of different sizes.",
+  "keywords": [
+    "hospital resource scheduling",
+    "dynamic weighted distance anomaly detection",
+    "energy efficiency"
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "paper_id": "P09",
+  "title": "Nurse Scheduling with State-of-the Art Open-Source Tools.",
+  "year": null,
+  "source": {
+    "doi": "10.3233/SHTI230511",
+    "url": "https://doi.org/10.3233/SHTI230511"
+  },
+  "problem": "Nurse scheduling is an NP-hard and highly context-dependent problem that remains unsolved, requiring guidance for practical implementation without costly tools.",
+  "contribution": "The paper demonstrates the effectiveness of using open-source tools like OMPR and DEAP for nurse scheduling, providing a valuable alternative to commercial products.",
+  "method": "A mathematical model is combined with a genetic algorithm.",
+  "data_setup": "A Swiss hospital planning a new nurse training station with completed capacity planning and known constraints.",
+  "results": "The solutions indicate that actual capacity planning together with hard constraints cannot lead to valid staff schedules, necessitating more degrees of freedom.",
+  "limitations": "not_specified",
+  "keywords": [
+    "nurse scheduling",
+    "Genetic algorithm",
+    "Open-source tools",
+    "Mathematical model",
+    "Constraints"
+  ]
+}

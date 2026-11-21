@@ -1,0 +1,22 @@
+{
+  "paper_id": "P05",
+  "title": "Day surgery appointment scheduling with patient preferences and stochastic operation duration.",
+  "year": null,
+  "source": {
+    "doi": "10.3233/thc-192086",
+    "url": "https://doi.org/10.3233/thc-192086"
+  },
+  "problem": "The paper addresses the problem of day surgery scheduling with patient preferences and limited operation rooms, aiming to increase operation efficiency and reduce surgery costs.",
+  "contribution": "A multiple objective stochastic programming model and a multi-objective genetic algorithm are proposed to address day surgery scheduling with patient preferences and stochastic operation durations.",
+  "method": "A multi-objective genetic algorithm is designed to solve a multiple objective stochastic programming model.",
+  "data_setup": "not_specified",
+  "results": "The proposed model and algorithm provide a feasible solution for maximizing individual preference of surgeons and improving operation room utilization.",
+  "limitations": "not_specified",
+  "keywords": [
+    "day surgery",
+    "patient preferences",
+    "stochastic operation duration",
+    "scheduling",
+    "Genetic algorithm"
+  ]
+}
